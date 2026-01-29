@@ -1,0 +1,5 @@
+**/build/
+**/Move.lock
+**/.move/
+.DS_Store
+.vscode/
