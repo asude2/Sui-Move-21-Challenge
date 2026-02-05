@@ -1,0 +1,38 @@
+/// DAY 9: Enums & TaskStatus
+/// Today you will:
+/// 1. Learn about enums
+/// 2. Replace bool with an enum
+/// 3. Use match expressions
+
+module challenge::day_09 {
+    use std::string::String;
+
+    // TODO: Define an enum called 'TaskStatus' with two variants:
+    // - Open
+    // - Completed
+    // Add 'copy' and 'drop' abilities
+    public enum TaskStatus has drop,copy{
+        Open,
+        Completed,
+    }
+    // TODO: Update Task struct to use TaskStatus instead of done: bool
+    public struct Task has drop,copy{
+        title:String,
+        reward:u64,
+        status:TaskStatus,
+    }
+
+    // TODO: Update new_task to set status = TaskStatus::Open
+    public fun new_task(title:String,reward:u64):Task{
+        Task{
+            title,
+            reward,
+            status:TaskStatus::Open,
+        }
+    }
+
+    // TODO: Write a function 'is_open' that checks if task.status == TaskStatus::Open
+    public fun is_open(task: &Task):bool{
+        task.status == TaskStatus::Open
+    }   
+}
